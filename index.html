@@ -31,14 +31,23 @@
       }
     });
 
+    //separating all the divs inside React.render(...)
+    var App = React.createClass({
+      render: function() {
+        return (
+          <div>
+            <Component user="John">This person is cool</Component>
+            <Component user="Emily">She is beautiful</Component>
+            <Component user="Sally">She is a runner</Component>
+          </div>
+          )
+      }
+    })
+
     // Using Children
     // Children is anything between the "Component" tag
     // add properties
-    React.render(
-      <div>
-        <Component user="John">This person is cool</Component>
-        <Component user="Emily">She is beautiful</Component>
-      </div>, document.getElementById("content"));
+    React.render(<App />, document.getElementById("content"));
 
   </script>
 </body>
