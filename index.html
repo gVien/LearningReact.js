@@ -14,13 +14,18 @@
     //all components will be here
     //a render function is required
 
+      // do something
+      alertMessage: function() {
+      {/* whenever a link is clicked, the specific user will say the corresponding message */}
+        alert(this.props.user + ": " + this.props.children);
+      },
       //render function renders the content inside the function
       render: function() {
         return (
             // applying the children here
             <div>
               <h3>{this.props.user}</h3>  {/*this will display the user */}
-              <p>{this.props.children}</p>  {/*this will display the children of the user (the innerHTML of the component tag)*/}
+              <a onClick={this.alertMessage} href="#">Click Here</a> {/* # is a deadlink */}
             </div>
           );
       }
