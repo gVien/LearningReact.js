@@ -16,8 +16,10 @@
 
       //render function renders the content inside the function
       render: function() {
+        // console.log(this.props);
+        // this.props is an object {user: user, fruit: fruit}
         return (
-            <h2> HEADING NUMBER 2 </h2>
+            <h2> {this.props.user} like to eat {this.props.fruit}</h2>
           );
       }
     });
@@ -28,11 +30,12 @@
     // TO RENDER MORE THAN 1 ITEM, ENCAPSULATE IT INSIDE ANOTHER ELEMENT (e.g. div)
     // React.render(<Component />, document.getElementById("content"));
 
+    // add properties
     React.render(
       <div>
-        <Component />
-        <Component />
-        <Component />
+        <Component user="Sam" fruit="oranges"/>
+        <Component user="Mary" fruit="apples"/>
+        <Component user="John" fruit="pears"/>
       </div>, document.getElementById("content"));
 
   </script>
