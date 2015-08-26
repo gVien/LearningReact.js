@@ -16,26 +16,23 @@
 
       //render function renders the content inside the function
       render: function() {
-        // console.log(this.props);
-        // this.props is an object {user: user, fruit: fruit}
         return (
-            <h2> {this.props.user} like to eat {this.props.fruit}</h2>
+            // applying the children here
+            <div>
+              <h3>{this.props.user}</h3>  {/*this will display the user */}
+              <p>{this.props.children}</p>  {/*this will display the children of the user (the innerHTML of the component tag)*/}
+            </div>
           );
       }
     });
 
-    // to display it
-    // React.render(<what to display>, <where to display>)
-    // IT CAN RENDER ONE THING
-    // TO RENDER MORE THAN 1 ITEM, ENCAPSULATE IT INSIDE ANOTHER ELEMENT (e.g. div)
-    // React.render(<Component />, document.getElementById("content"));
-
+    // Using Children
+    // Children is anything between the "Component" tag
     // add properties
     React.render(
       <div>
-        <Component user="Sam" fruit="oranges"/>
-        <Component user="Mary" fruit="apples"/>
-        <Component user="John" fruit="pears"/>
+        <Component user="John">This person is cool</Component>
+        <Component user="Emily">She is beautiful</Component>
       </div>, document.getElementById("content"));
 
   </script>
