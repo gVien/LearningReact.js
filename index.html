@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Learning React.js!</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+</head>
+<body>
+  <div id="content"></div>
+  <script type="text/jsx">
+    //creating a class
+    var Component = React.createClass({
+    //all components will be here
+    //a render function is required
+
+      //render function renders the content inside the function
+      render: function() {
+        return (
+            <h2> HEADING NUMBER 2 </h2>
+          );
+      }
+    });
+
+    // to display it
+    // React.render(<what to display>, <where to display>)
+    // IT CAN RENDER ONE THING
+    // TO RENDER MORE THAN 1 ITEM, ENCAPSULATE IT INSIDE ANOTHER ELEMENT (e.g. div)
+    // React.render(<Component />, document.getElementById("content"));
+
+    React.render(
+      <div>
+        <Component />
+        <Component />
+        <Component />
+      </div>, document.getElementById("content"));
+
+  </script>
+</body>
+</html>
