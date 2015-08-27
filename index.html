@@ -10,40 +10,42 @@
 
   <div id="content"></div>
 
-  <!-- 3 ways to render -->
-
-  <!-- first one, using "text/jsx" -->
+  <!-- using properties" -->
   <script type="text/jsx">
-  // var App = React.createClass({
-
-  //   render: function() {
-  //       return <h1>Hello World</h1>
-  //     }
-  // });
-
-  // React.render(<App />, document.body);
-
-  </script>
-
-  <script>
-    // second one, without using "text/jsx" in script 
-    // does not work for some reasons?
-    // var App = React.createClass({
-    //   render: function() {
-    //       return React.DOM.h1(null, "Hi There")
-    //     }
-    // });
-
-    // React.render(App(), document.body);
-
-    // third way, using "createElement" (also does not use jsx)
-    var App = React.createClass({
-      render: function() {
-        return React.createElement("h1", null, "Hello there")
+  var App = React.createClass({
+    // defining the devault properties
+    // this may not be needed
+    // if it is not needed, the txt can be moved to
+    // inside the <App .../> below
+    getDefaultProps: function() {
+      return {
+        txt: "this is the default value",
+        cat: 0
       }
-    });
+    },
 
-    React.render(React.createElement(App), document.body)
+    // defining the propTypes
+    // that we are expecting
+    // note that "isRequired" has to be there
+    propTypes: {
+      txt: React.PropTypes.string,
+      cat: React.PropTypes.number.isRequired
+    },
+    render: function() {
+
+        var txt = this.props.txt;
+        return (
+          <div>
+            <b>BOLD</b>
+            <h1>{txt}</h1>
+          </div>
+          );
+      }
+  });
+
+  React.render(<App cat={3} />, document.body);
+
   </script>
+
 </body>
 </html>
