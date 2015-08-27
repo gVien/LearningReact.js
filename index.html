@@ -10,40 +10,43 @@
 
   <div id="content"></div>
 
-  <!-- using properties" -->
+  <!-- using state 
+  unlike properties, which is static in nature,
+  state is dynamic, so if the txt is in a state then it will
+  be dynamic. It will be used with form here -->
   <script type="text/jsx">
   var App = React.createClass({
-    // defining the devault properties
-    // this may not be needed
-    // if it is not needed, the txt can be moved to
-    // inside the <App .../> below
-    getDefaultProps: function() {
+    // to initial state, use `getInitialState`
+    getInitialState: function() {
+      {/* the id is not needed here but if we have more than 2 states, we can use the id in our update fxn*/}
       return {
-        txt: "this is the default value",
-        cat: 0
+        txt: "This is the state txt",
+        id: 1
       }
     },
 
-    // defining the propTypes
-    // that we are expecting
-    // note that "isRequired" has to be there
-    propTypes: {
-      txt: React.PropTypes.string,
-      cat: React.PropTypes.number.isRequired
+    // to update the state, we need to create an update fxn
+    // it accepts an event handler
+    update: function(e) {
+      this.setState({txt: e.target.value})
     },
-    render: function() {
 
-        var txt = this.props.txt;
+    // we need to modify this render fxn to include a text box
+    // to update the state
+    render: function() {
+        {/*state must be used here*/}
+        var txt = this.state.txt;
         return (
           <div>
-            <b>BOLD</b>
+            {/*add in a text field to update the state*/}
+            <input type="text" onChange={this.update} />
             <h1>{txt}</h1>
           </div>
           );
       }
   });
 
-  React.render(<App cat={3} />, document.body);
+  React.render(<App txt="the txt prop" />, document.body);
 
   </script>
 
