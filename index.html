@@ -7,48 +7,43 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
 </head>
 <body>
-  <div id="content"></div>
-  <script type="text/jsx">
-    //creating a class
-    var Component = React.createClass({
-    //all components will be here
-    //a render function is required
 
-      // do something
-      alertMessage: function() {
-      {/* whenever a link is clicked, the specific user will say the corresponding message */}
-        alert(this.props.user + ": " + this.props.children);
-      },
-      //render function renders the content inside the function
+  <div id="content"></div>
+
+  <!-- 3 ways to render -->
+
+  <!-- first one, using "text/jsx" -->
+  <script type="text/jsx">
+  // var App = React.createClass({
+
+  //   render: function() {
+  //       return <h1>Hello World</h1>
+  //     }
+  // });
+
+  // React.render(<App />, document.body);
+
+  </script>
+
+  <script>
+    // second one, without using "text/jsx" in script 
+    // does not work for some reasons?
+    // var App = React.createClass({
+    //   render: function() {
+    //       return React.DOM.h1(null, "Hi There")
+    //     }
+    // });
+
+    // React.render(App(), document.body);
+
+    // third way, using "createElement" (also does not use jsx)
+    var App = React.createClass({
       render: function() {
-        return (
-            // applying the children here
-            <div>
-              <h3>{this.props.user}</h3>  {/*this will display the user */}
-              <a onClick={this.alertMessage} href="#">Click Here</a> {/* # is a deadlink */}
-            </div>
-          );
+        return React.createElement("h1", null, "Hello there")
       }
     });
 
-    //separating all the divs inside React.render(...)
-    var App = React.createClass({
-      render: function() {
-        return (
-          <div>
-            <Component user="John">This person is cool</Component>
-            <Component user="Emily">She is beautiful</Component>
-            <Component user="Sally">She is a runner</Component>
-          </div>
-          )
-      }
-    })
-
-    // Using Children
-    // Children is anything between the "Component" tag
-    // add properties
-    React.render(<App />, document.getElementById("content"));
-
+    React.render(React.createElement(App), document.body)
   </script>
 </body>
 </html>
